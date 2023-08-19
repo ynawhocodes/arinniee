@@ -1,4 +1,7 @@
+import useNavigation from "../../_hooks/useNavigation";
+
 const SideModal = ({ isOpen, toggleModal }) => {
+  const { onLink } = useNavigation();
   return (
     <div>
       {isOpen && (
@@ -16,23 +19,61 @@ const SideModal = ({ isOpen, toggleModal }) => {
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="grid gap-3">
+        <div className="grid">
           <button onClick={toggleModal}>
             <img src="/images/close.png" alt="close" />
           </button>
-          <button className="mt-7">
+          <button
+            className="mt-7 py-1.5"
+            onClick={() => {
+              onLink("/compcard");
+              toggleModal();
+            }}
+          >
+            <img src="/images/compcard.png" alt="compcard" />
+          </button>
+          <button
+            className="py-1.5"
+            onClick={() => {
+              onLink("/artwork");
+              toggleModal();
+            }}
+          >
             <img src="/images/artwork.png" alt="artwork" />
           </button>
-          <button>
+          <button
+            className="py-1.5"
+            onClick={() => {
+              onLink("/film");
+              toggleModal();
+            }}
+          >
             <img src="/images/film.png" alt="film" />
           </button>
-          <button>
+          <button
+            className="py-1.5"
+            onClick={() => {
+              onLink("/drawing");
+              toggleModal();
+            }}
+          >
             <img src="/images/drawing.png" alt="drawing" />
           </button>
-          <button className="mb-7">
+          <button
+            className="mb-7 py-1.5"
+            onClick={() => {
+              onLink("/shop");
+              toggleModal();
+            }}
+          >
             <img src="/images/shop.png" alt="shop" />
           </button>
-          <button>
+          <button
+            onClick={() => {
+              onLink("/");
+              toggleModal();
+            }}
+          >
             <img src="/images/home.png" alt="home" />
           </button>
         </div>
