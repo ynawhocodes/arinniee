@@ -5,12 +5,10 @@ const ArtworkPage = () => {
         <img src="/images/artwork_title.png" alt="artwork" />
       </div>
       <div className="flex justify-center">
-        <div className="px-4 py-2.5 grid grid-cols-3 gap-2.5 lg:w-3/4 w-full">
-          <div className="aspect-[1/1] bg-gray-300"></div>
-          <div className="aspect-[1/1] bg-gray-300"></div>
-          <div className="aspect-[1/1] bg-gray-300"></div>
-          <div className="aspect-[1/1] bg-gray-300"></div>
-          <div className="aspect-[1/1] bg-gray-300"></div>
+        <div className="px-4 py-2.5 lg:w-3/4 w-full">
+          <div className="aspect-[2.5/1] mb-2 bg-gray-300"></div>
+          <div className="aspect-[2.5/1] mb-2 bg-gray-300"></div>
+          <div className="aspect-[2.5/1] mb-2 bg-gray-300"></div>
         </div>
       </div>
     </>

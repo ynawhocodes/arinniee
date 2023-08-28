@@ -1,3 +1,5 @@
+import ImageSlider from "../../(components)/ImageSlider";
+
 const CompcardPage = () => {
   return (
     <>
@@ -22,12 +24,23 @@ const CompcardPage = () => {
         </div>
       </div>
       <div className="flex justify-center">
-        <div className="px-4 py-2.5 grid grid-cols-3 gap-2.5 lg:w-3/4 w-full">
-          <div className="aspect-[1/1] bg-gray-300"></div>
-          <div className="aspect-[1/1] bg-gray-300"></div>
-          <div className="aspect-[1/1] bg-gray-300"></div>
-          <div className="aspect-[1/1] bg-gray-300"></div>
-          <div className="aspect-[1/1] bg-gray-300"></div>
+        <div className="px-4 py-2.5 lg:w-3/4 w-full">
+          <ImageSlider
+            images={[
+              {
+                id: 1,
+                src: "https://cdn.designhouse.co.kr/cms/img/2021/09/M.1632811013.5622.2.jpg",
+              },
+              {
+                id: 2,
+                src: "https://cdn.designhouse.co.kr/cms/img/2021/09/M.1632811013.5622.2.jpg",
+              },
+              {
+                id: 3,
+                src: "https://cdn.designhouse.co.kr/cms/img/2021/09/M.1632811013.5622.2.jpg",
+              },
+            ]}
+          ></ImageSlider>
         </div>
       </div>
     </>
