@@ -1,6 +1,6 @@
 "use client";
 
-import Header from "./(components)/common/Header";
+import Header from "../(components)/common/Header";
 import { useState } from "react";
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
         </>
       ) : (
         <div onClick={() => setOnToggle(true)}>
-          <div className="fixed top-0 h-10 p-4 z-50 bg-white">
+          <div className="fixed top-0 z-50 h-10 p-4 bg-white">
             <img src="/images/bar.png" alt="bar" />
           </div>
           <div className="flex items-center justify-center h-screen">
