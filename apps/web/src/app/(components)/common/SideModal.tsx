@@ -2,15 +2,16 @@ import useNavigation from "../../_hooks/useNavigation";
 
 const SideModal = ({ isOpen, toggleModal }) => {
   const { onLink } = useNavigation();
+  
   return (
     <div>
       {isOpen && (
         <>
           <div
             onClick={toggleModal}
-            className="fixed inset-0 blur-background pointer-events-auto transition-opacity duration-300"
+            className="fixed inset-0 transition-opacity duration-300 pointer-events-auto blur-background"
           />
-          <div className="fixed inset-0 backdrop-blur-sm pointer-events-none" />
+          <div className="fixed inset-0 pointer-events-none backdrop-blur-sm" />
         </>
       )}
 
