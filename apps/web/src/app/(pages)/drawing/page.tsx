@@ -34,11 +34,10 @@ const DrawingPage = () => {
 
       const randomPoint = getRandomPointInRange(
         coordinates.minX,
-        coordinates.minY,
+        coordinates.minY + 300,
         coordinates.maxX,
         coordinates.maxY
       );
-      console.log("Random Point (x, y):", randomPoint.x, randomPoint.y);
       setPosition({ x: randomPoint.x, y: randomPoint.y });
       // setDefaultPosition({ x: randomPoint.x, y: randomPoint.y }); // defaultPosition 업데이트
     };
