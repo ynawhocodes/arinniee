@@ -7,10 +7,12 @@ import {
   getRandomPointInRange,
 } from "../../_utils/calculate";
 import { BrowserCoordinates } from "../../_type/BrowserCoordinates";
+import useDrawing from "../../_hooks/use-drawing";
 
 const DrawingPage = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-
+  const { drawings } = useDrawing();
+  
   const trackPos = (data: any) => {
     setPosition({ x: data.x, y: data.y });
   };
