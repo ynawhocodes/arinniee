@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.33.1",
     "next": "^13.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-draggable": "4.4.5",
+    "swr": "^2.2.2",
     "ui": "workspace:*"
   },
   "devDependencies": {
