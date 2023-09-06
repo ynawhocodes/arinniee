@@ -1,4 +1,4 @@
-import useNavigation from "../../_hooks/useNavigation";
+import useNavigation from "../../_hooks/use-navigation";
 
 const SideModal = ({ isOpen, toggleModal }) => {
   const { onLink } = useNavigation();
