@@ -1,4 +1,4 @@
-import { BrowserCoordinates } from "../_type/BrowserCoordinates";
+import { BrowserCoordinates } from "../_type/browser-coordinates";
 
 export const calculateBrowserCoordinates = (
   browserWidth: number,
