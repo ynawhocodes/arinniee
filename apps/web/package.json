@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.33.1",
+    "browser-image-compression": "^2.0.2",
     "next": "^13.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-draggable": "4.4.5",
+    "react-draggable-custom": "^1.4.7",
     "swr": "^2.2.2",
     "ui": "workspace:*"
   },
