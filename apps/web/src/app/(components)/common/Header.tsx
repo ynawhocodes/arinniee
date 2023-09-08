@@ -11,7 +11,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="fixed top-0 h-10 p-4">
+    <nav className="fixed top-0 z-50 h-10 p-4">
       <button onClick={toggleModal}>
         <img src="/images/bar.png" alt="bar" />
       </button>
