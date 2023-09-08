@@ -5,7 +5,7 @@ const useDrawing = () => {
   const { data: drawings, error } = useSWR("drawing", () => getDrawing());
 
   console.log(error);
-  
+  console.log('useDrawing', drawings)
   return { drawings };
 };
 

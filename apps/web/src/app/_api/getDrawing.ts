@@ -10,7 +10,6 @@ const getDrawing = async () => {
   if (error) {
     console.log(error);
   }
-
   return drawings as DrawingType[];
 };
 
