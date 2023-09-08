@@ -6,16 +6,21 @@ import {
   calculateBrowserCoordinates,
   getRandomPointInRange,
 } from "../../_utils/calculate";
-import { BrowserCoordinates } from "../../_type/BrowserCoordinates";
+import { BrowserCoordinates } from "../../_type/browser-coordinates";
 import useDrawing from "../../_hooks/use-drawing";
+import { Position } from "../../_type/position";
+import Image from "next/image";
 
 const DrawingPage = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const { drawings } = useDrawing();
-  
+  const [positionList, setPositionList] = useState<Position[]>([]);
+
   const trackPos = (data: any) => {
-    setPosition({ x: data.x, y: data.y });
+    const newPositionList = [...positionList, { x: data.x, y: data.y }];
+    setPositionList(newPositionList);
   };
+
   const [browserCoordinates, setBrowserCoordinates] =
     useState<BrowserCoordinates>({
       minX: 0,
@@ -25,6 +30,8 @@ const DrawingPage = () => {
     });
 
   useEffect(() => {
+    if (!drawings) return;
+    
     const updateBrowserCoordinates = () => {
       const browserWidth = window.innerWidth;
       const browserHeight = window.innerHeight;
@@ -40,10 +47,17 @@ const DrawingPage = () => {
         coordinates.maxX,
         coordinates.maxY
       );
-      setPosition({ x: randomPoint.x, y: randomPoint.y });
-      // setDefaultPosition({ x: randomPoint.x, y: randomPoint.y }); // defaultPosition 업데이트
+      // setPosition({ x: randomPoint.x, y: randomPoint.y });
+      for (let i = 0; i <= drawings?.length; i++) {
+        const newPosition: Position = { x: randomPoint.x, y: randomPoint.y };
+        console.log('newPosition', newPosition);
+        
+        setPositionList((prevPositionList) => [...prevPositionList, newPosition]);
+      }
+      console.log('positionList', positionList);
     };
-
+     
+    
     updateBrowserCoordinates();
     window.addEventListener("resize", updateBrowserCoordinates);
 
@@ -62,14 +76,24 @@ const DrawingPage = () => {
         <img src="/images/drawing_title.png" alt="drawing" />
       </div>
       <div className="flex justify-center">
-        <Draggable
-          onDrag={(e, data) => trackPos(data)}
-          position={position}
-        >
-          <div className="w-[20%] aspect-[1/1] bg-gray-300">
-            x: {position.x.toFixed(0)}, y: {position.y.toFixed(0)}
+        {drawings && positionList.map((data, index) => (
+          <div className="" key={index}>
+            
+              <Draggable
+                onDrag={(e, data) => trackPos(data)}
+                position={data[index]}
+              >
+                <Image
+                  className="lg:w-[20%] w-[40%] aspect-[1/1] bg-gray-300"
+                  src={drawings[index]?.thumbnailImageUrl}
+                  alt=""
+                  width={300}
+                  height={300}
+                />
+              </Draggable>
+            
           </div>
-        </Draggable>
+        ))}
       </div>
     </>
   );
