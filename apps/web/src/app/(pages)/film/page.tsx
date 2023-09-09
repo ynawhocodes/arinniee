@@ -21,16 +21,23 @@ const FilmPage = () => {
   return (
     <>
       <ImageModal isOpen={isModalOpen} onClose={closeModal}>
-        {films && <img src={films[Number(clickImageIndex)]?.thumbnailImageUrl}/>}
+        {films && (
+          <img src={films[Number(clickImageIndex)]?.thumbnailImageUrl} />
+        )}
       </ImageModal>
       <div className="flex items-center justify-center py-[120px]">
         <img src="/images/film_title.png" alt="film" />
       </div>
-      <TempUploader folder="film" />
       <div className="flex justify-center">
         <div className="px-4 py-2.5 grid grid-cols-3 gap-2.5 lg:w-1/2 w-full">
           {films?.map((film, index) => (
-            <div key={film.id} onClick={() => {openModal(); setClickImageIndex(index);}}>
+            <div
+              key={film.id}
+              onClick={() => {
+                openModal();
+                setClickImageIndex(index);
+              }}
+            >
               <Image
                 className="aspect-[1/1] bg-gray-300"
                 src={film.thumbnailImageUrl}
