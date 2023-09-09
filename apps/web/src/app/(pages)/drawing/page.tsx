@@ -1,99 +1,45 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Draggable from "react-draggable";
-import {
-  calculateBrowserCoordinates,
-  getRandomPointInRange,
-} from "../../_utils/calculate";
-import { BrowserCoordinates } from "../../_type/browser-coordinates";
-import useDrawing from "../../_hooks/use-drawing";
-import { Position } from "../../_type/position";
 import Image from "next/image";
+import TempUploader from "../../(components)/common/TempUploader";
+import ImageModal from "../../(components)/ImageModal";
+import { useState } from "react";
+import useDrawing from "../../_hooks/use-drawing";
 
 const DrawingPage = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
   const { drawings } = useDrawing();
-  const [positionList, setPositionList] = useState<Position[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [clickImageIndex, setClickImageIndex] = useState(0);
 
-  const trackPos = (data: any) => {
-    const newPositionList = [...positionList, { x: data.x, y: data.y }];
-    setPositionList(newPositionList);
+  const openModal = () => {
+    setIsModalOpen(true);
   };
 
-  const [browserCoordinates, setBrowserCoordinates] =
-    useState<BrowserCoordinates>({
-      minX: 0,
-      minY: 0,
-      maxX: 0,
-      maxY: 0,
-    });
-
-  useEffect(() => {
-    if (!drawings) return;
-    
-    const updateBrowserCoordinates = () => {
-      const browserWidth = window.innerWidth;
-      const browserHeight = window.innerHeight;
-      const coordinates = calculateBrowserCoordinates(
-        browserWidth,
-        browserHeight
-      );
-      setBrowserCoordinates(coordinates);
-
-      const randomPoint = getRandomPointInRange(
-        coordinates.minX,
-        coordinates.minY + 300,
-        coordinates.maxX,
-        coordinates.maxY
-      );
-      // setPosition({ x: randomPoint.x, y: randomPoint.y });
-      for (let i = 0; i <= drawings?.length; i++) {
-        const newPosition: Position = { x: randomPoint.x, y: randomPoint.y };
-        console.log('newPosition', newPosition);
-        
-        setPositionList((prevPositionList) => [...prevPositionList, newPosition]);
-      }
-      console.log('positionList', positionList);
-    };
-     
-    
-    updateBrowserCoordinates();
-    window.addEventListener("resize", updateBrowserCoordinates);
-
-    return () => {
-      window.removeEventListener("resize", updateBrowserCoordinates);
-    };
-  }, []);
-
-  useEffect(() => {
-    console.log("Position after state update:", position);
-  }, [position]);
-
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   return (
     <>
+      <ImageModal isOpen={isModalOpen} onClose={closeModal}>
+        {drawings && <img src={drawings[Number(clickImageIndex)]?.thumbnailImageUrl}/>}
+      </ImageModal>
       <div className="flex items-center justify-center py-[120px]">
         <img src="/images/drawing_title.png" alt="drawing" />
       </div>
       <div className="flex justify-center">
-        {drawings && positionList.map((data, index) => (
-          <div className="" key={index}>
-            
-              <Draggable
-                onDrag={(e, data) => trackPos(data)}
-                position={data[index]}
-              >
-                <Image
-                  className="lg:w-[20%] w-[40%] aspect-[1/1] bg-gray-300"
-                  src={drawings[index]?.thumbnailImageUrl}
-                  alt=""
-                  width={300}
-                  height={300}
-                />
-              </Draggable>
-            
-          </div>
-        ))}
+        <div className="px-4 py-2.5 grid grid-cols-3 gap-2.5 lg:w-1/2 w-full">
+          {drawings?.map((drawing, index) => (
+            <div key={drawing.id} onClick={() => {openModal(); setClickImageIndex(index);}}>
+              <Image
+                className="aspect-[1/1] bg-gray-300"
+                src={drawing.thumbnailImageUrl}
+                alt="drawing thumbnail"
+                width={300}
+                height={300}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

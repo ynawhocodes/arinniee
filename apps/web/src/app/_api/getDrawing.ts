@@ -5,7 +5,6 @@ const getDrawing = async () => {
   let { data: drawings, error } = await supabase
     .from("drawing")
     .select("*")
-    .limit(12)
 
   if (error) {
     console.log(error);
