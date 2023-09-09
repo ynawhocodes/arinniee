@@ -23,6 +23,9 @@ const CompcardPage = () => {
           </div>
         </div>
       </div>
+      <div className="flex items-center justify-center ">
+        <img src="/images/comingsoon.png" alt="comingsoon" />
+      </div>
       <div className="flex justify-center">
         <div className="px-4 py-2.5 lg:w-3/4 w-full">
           {/* <ImageSlider
