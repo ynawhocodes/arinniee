@@ -4,16 +4,17 @@ import { memo, useEffect } from "react";
 import { useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import { toCompressImage } from "../../_utils/toCompressImage";
-import { postFilmImage } from "../../_api/storage/postFilmImage";
 
 interface IsProfileImageUploader {
   defaultImageUrl: string;
-  setImageFile: (file: File | null) => void;
+  setThumbnail: (file: File | null) => void;
+  setImage: (file: File | null) => void;
 }
 
 const ImageUploader = ({
   defaultImageUrl,
-  setImageFile,
+  setThumbnail,
+  setImage
 }: IsProfileImageUploader) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [attachment, setAttachment] = useState<string | ArrayBuffer | null>();
@@ -39,23 +40,26 @@ const ImageUploader = ({
         return;
       }
 
-      const theFile = await toCompressImage(file);
-      console.log(theFile);
+      const theThumbnailFile = await toCompressImage(file, true);
+      const theImageFile = await toCompressImage(file);
+      console.log(theImageFile);
 
       const reader = new FileReader();
       reader.onload = () => {
         const result = reader.result;
         setAttachment(result);
       };
-      reader.readAsDataURL(theFile);
+      reader.readAsDataURL(theThumbnailFile);
 
-      await setImageFile(theFile);
+      await setThumbnail(theThumbnailFile);
+      await setImage(theImageFile);
     },
-    [setImageFile]
+    [setThumbnail,setImage]
   );
 
   const onClearAttachment = () => {
-    setImageFile(null);
+    setThumbnail(null);
+    setImage(null)
     setAttachment(null);
     if (!inputRef.current) return;
     inputRef.current.value = "";
