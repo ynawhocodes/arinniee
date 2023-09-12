@@ -9,7 +9,7 @@ const postFilm =  async (film: FilmType) => {
   )
   .select()
 
-  if( error){
+  if(error){
     console.log('error', error)
     return
   }
