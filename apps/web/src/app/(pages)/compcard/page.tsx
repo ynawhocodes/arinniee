@@ -1,11 +1,34 @@
+"use client";
+
+import { useState } from "react";
+import ImageModal from "../../(components)/ImageModal";
 import ImageSlider from "../../(components)/ImageSlider";
 import useCompcard from "../../_hooks/use-compcard";
+import Image from "next/image";
+import TempUploader from "../../(components)/common/TempUploader";
 
 const CompcardPage = () => {
   const { compcards } = useCompcard();
-  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [clickImageIndex, setClickImageIndex] = useState(0);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  console.log(compcards)
+
   return (
     <>
+      <ImageModal isOpen={isModalOpen} onClose={closeModal}>
+        {compcards && (
+          <img src={compcards[Number(clickImageIndex)]?.imageUrl} />
+        )}
+      </ImageModal>
       <div className="flex items-center justify-center py-[120px]">
         <div>
           <img src="/images/compcard_title.png" alt="compcard" />
@@ -26,12 +49,29 @@ const CompcardPage = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center ">
+      {/* <div className="flex items-center justify-center ">
         <img src="/images/comingsoon.png" alt="comingsoon" />
-      </div>
+      </div> */}
       <div className="flex justify-center">
-        <div className="px-4 py-2.5 lg:w-3/4 w-full">
-          
+        <div className="px-4 py-2.5 grid grid-cols-3 gap-2.5 w-full max-w-[600px]">
+          {compcards?.map((compcard, index) => (
+            <div
+              key={compcard.id}
+              onClick={() => {
+                openModal();
+                setClickImageIndex(index);
+                console.log(compcard.thumbnailImageUrl)
+              }}
+            >
+              <Image
+                className="aspect-[1/1] bg-gray-300 object-cover"
+                src={compcard.thumbnailImageUrl}
+                alt="film thumbnail"
+                width={300}
+                height={300}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </>
