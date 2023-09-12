@@ -1,6 +1,9 @@
 import ImageSlider from "../../(components)/ImageSlider";
+import useCompcard from "../../_hooks/use-compcard";
 
 const CompcardPage = () => {
+  const { compcards } = useCompcard();
+  
   return (
     <>
       <div className="flex items-center justify-center py-[120px]">
@@ -28,22 +31,7 @@ const CompcardPage = () => {
       </div>
       <div className="flex justify-center">
         <div className="px-4 py-2.5 lg:w-3/4 w-full">
-          {/* <ImageSlider
-            images={[
-              {
-                id: 1,
-                src: "https://cdn.designhouse.co.kr/cms/img/2021/09/M.1632811013.5622.2.jpg",
-              },
-              {
-                id: 2,
-                src: "https://cdn.designhouse.co.kr/cms/img/2021/09/M.1632811013.5622.2.jpg",
-              },
-              {
-                id: 3,
-                src: "https://cdn.designhouse.co.kr/cms/img/2021/09/M.1632811013.5622.2.jpg",
-              },
-            ]}
-          ></ImageSlider> */}
+          
         </div>
       </div>
     </>
