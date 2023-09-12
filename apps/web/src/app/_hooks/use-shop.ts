@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { getShop } from "../_api/getShop";
+import { getShop } from "../_api/shop/getShop";
 
 const useShop = () => {
   const { data: shops, error } = useSWR("shop", () => getShop());

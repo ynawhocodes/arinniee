@@ -1,5 +1,5 @@
-import { CompcardType } from "../_type/compcard";
-import { supabase } from "../supabase";
+import { CompcardType } from "../../_type/compcard";
+import { supabase } from "../../supabase";
 
 const getCompcard = async () => {
   let { data: compcards, error } = await supabase

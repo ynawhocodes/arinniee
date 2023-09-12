@@ -1,5 +1,5 @@
-import { ShopType } from "../_type/shop";
-import { supabase } from "../supabase";
+import { ShopType } from "../../_type/shop";
+import { supabase } from "../../supabase";
 
 const getProduct = async (productId: number) => {
   let { data: product, error } = await supabase

@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { getCompcard } from "../_api/getCompcard";
+import { getCompcard } from "../_api/compcard/getCompcard";
 
 const useCompcard = () => {
   const { data: compcards, error } = useSWR("compcard", () => getCompcard());

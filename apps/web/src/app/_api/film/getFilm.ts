@@ -1,5 +1,5 @@
-import { supabase } from "../supabase";
-import { FilmType } from "../_type/film";
+import { supabase } from "../../supabase";
+import { FilmType } from "../../_type/film";
 
 const getFilm = async () => {
   let { data: films, error } = await supabase

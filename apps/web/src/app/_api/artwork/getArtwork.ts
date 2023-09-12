@@ -1,5 +1,5 @@
-import { supabase } from "../supabase";
-import { ArtworkType } from "../_type/artwork";
+import { supabase } from "../../supabase";
+import { ArtworkType } from "../../_type/artwork";
 
 const getArtwork = async () => {
   let { data: artworks, error } = await supabase

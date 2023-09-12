@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { getArtwork } from "../_api/getArtwork";
+import { getArtwork } from "../_api/artwork/getArtwork";
 
 const useArtwork = () => {
   const { data: artworks, error } = useSWR("artwork", () => getArtwork());
