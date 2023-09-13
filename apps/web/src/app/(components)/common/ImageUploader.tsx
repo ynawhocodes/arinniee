@@ -7,8 +7,8 @@ import { toCompressImage } from "../../_utils/toCompressImage";
 
 interface IsProfileImageUploader {
   defaultImageUrl: string;
-  setThumbnail: (file: File | null) => void;
-  setImage: (file: File | null) => void;
+  setThumbnail: (file: File[] | null) => void;
+  setImage: (file: File[] | null) => void;
 }
 
 const ImageUploader = ({
@@ -28,34 +28,38 @@ const ImageUploader = ({
   const onUploadImage = useCallback(
     async (event: React.ChangeEvent<HTMLInputElement>) => {
       const { files, value } = event.target;
-      console.log(files, value);
+
+      // console.log(files, value);
+      
       if (!files) {
         return;
       }
-
-      const file = files[0];
-
-      // if (file.size > 4 * 1024 * 1024) {
-      //   alert("파일의 크기가 4mb를 초과했습니다");
-      //   return;
-      // }
-
-      const theThumbnailFile = await toCompressImage(file, true);
-      const theImageFile = await toCompressImage(file);
-      console.log(theImageFile);
-
+  
+      const thumbnailFiles = [];
+      const imageFiles = [];
+  
+      for (const file of files) {
+        const theThumbnailFile = await toCompressImage(file, true);
+        const theImageFile = await toCompressImage(file);
+        // console.log(theImageFile);
+  
+        thumbnailFiles.push(theThumbnailFile);
+        imageFiles.push(theImageFile);
+      }
+  
       const reader = new FileReader();
       reader.onload = () => {
         const result = reader.result;
         setAttachment(result);
       };
-      reader.readAsDataURL(theThumbnailFile);
-
-      await setThumbnail(theThumbnailFile);
-      await setImage(theImageFile);
+      reader.readAsDataURL(thumbnailFiles[0]);
+  
+      await setThumbnail(thumbnailFiles);
+      await setImage(imageFiles);
     },
-    [setThumbnail,setImage]
+    [setThumbnail, setImage]
   );
+  
 
   const onClearAttachment = () => {
     setThumbnail(null);
@@ -81,6 +85,7 @@ const ImageUploader = ({
             ref={inputRef}
             accept="image/*"
             onChange={onUploadImage}
+            multiple
           />
           <div>
             <div className="w-[80px] h-[80px] bg-grey rounded-full relative cursor-pointer">

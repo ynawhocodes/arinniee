@@ -8,33 +8,43 @@ import { postImage } from "../../_api/storage/postImage";
 
 const TempUploader = ({ folder }: { folder: string }) => {
   const [name, setName] = useState("");
-  const [thumbnail, setThumbnail] = useState(null);
-  const [image, setImage] = useState(null);
+  const [thumbnails, setThumbnails] = useState(null);
+  const [images, setImages] = useState(null);
   const onSubmit = () => {
-    if (!image) return;
+    if (!images) return;
+
+    const result = [];
+
+    for (let i = 0; i < images.length; i++) {
+      const image = images[i];
+      const thumbnail = thumbnails[i];
+      result.push({ image, thumbnail });
+    }
 
     const upload = async () => {
-      const thumbnailPath = await postImageToBucket(
-        thumbnail,
-        folder,
-        true,
-        name
-      );
-      const imagePath = await postImageToBucket(
-        image,
-        folder,
-        false,
-        name
-      );
-
-      const { data: thumbnailUrl } = await getPublicImageUrl(thumbnailPath);
-      const { data: imageUrl } = await getPublicImageUrl(imagePath);
-
-      postImage(folder, {
-        thumbnailImageUrl: thumbnailUrl.publicUrl,
-        imageUrl: imageUrl.publicUrl,
-        description: "",
-      });
+      for (const item of result) {
+        const thumbnailPath = await postImageToBucket(
+          item.thumbnail,
+          folder,
+          true,
+          `${name}_${item.thumbnail.name}`
+        );
+        const imagePath = await postImageToBucket(
+          item.image,
+          folder,
+          false,
+          `${name}_${item.image.name}`
+        );
+  
+        const { data: thumbnailUrl } = await getPublicImageUrl(thumbnailPath);
+        const { data: imageUrl } = await getPublicImageUrl(imagePath);
+  
+        postImage(folder, {
+          thumbnailImageUrl: thumbnailUrl.publicUrl,
+          imageUrl: imageUrl.publicUrl,
+          description: "",
+        });
+      }
     };
 
     upload();
@@ -45,14 +55,14 @@ const TempUploader = ({ folder }: { folder: string }) => {
       <div>
         <ImageUploader
           defaultImageUrl=""
-          setThumbnail={setThumbnail}
-          setImage={setImage}
+          setThumbnail={setThumbnails}
+          setImage={setImages}
         />
         <input
           type="text"
           onChange={(e) => setName(e.target.value)}
           value={name}
-          placeholder="file name"
+          placeholder="hash"
         />
         <button onClick={() => onSubmit()}>upload</button>
       </div>
