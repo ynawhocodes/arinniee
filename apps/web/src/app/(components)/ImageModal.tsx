@@ -27,7 +27,7 @@ const ImageModal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
         className="fixed inset-0 bg-black opacity-50"
         onClick={handleClose}
       ></div>
-      <div className="z-50 w-4/5 shadow-lg lg:w-1/3">
+      <div className="z-50 w-4/5 shadow-lg max-w-[400px]">
         {children}
         {/* <button
           className="absolute p-2 text-white bg-red-500 rounded-full top-2 right-2 hover:bg-red-600 focus:outline-none"
