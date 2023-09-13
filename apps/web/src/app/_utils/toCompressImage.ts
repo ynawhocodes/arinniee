@@ -3,7 +3,7 @@ import imageCompression from "browser-image-compression";
 const toCompressImage = async (file: File, isThumbnail?: boolean) => {
   const options = {
     // maxSizeMB: isThumbnail ? 0.7 : 1.6,
-    maxWidthOrHeight: isThumbnail ? 800 : 1200, //1920
+    maxWidthOrHeight: isThumbnail ? 500 : 1000, //1920
     useWebWorker: true,
   };
 

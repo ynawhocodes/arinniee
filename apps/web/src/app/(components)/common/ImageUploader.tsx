@@ -35,10 +35,10 @@ const ImageUploader = ({
 
       const file = files[0];
 
-      if (file.size > 4 * 1024 * 1024) {
-        alert("파일의 크기가 4mb를 초과했습니다");
-        return;
-      }
+      // if (file.size > 4 * 1024 * 1024) {
+      //   alert("파일의 크기가 4mb를 초과했습니다");
+      //   return;
+      // }
 
       const theThumbnailFile = await toCompressImage(file, true);
       const theImageFile = await toCompressImage(file);
