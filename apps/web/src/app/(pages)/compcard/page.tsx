@@ -33,13 +33,13 @@ const CompcardPage = () => {
         <div>
           <img src="/images/compcard_title.png" alt="compcard" />
           <div className="flex justify-center">
-            <a href="">
+            <a href="https://www.instagram.com/arinniee/">
               <img className="p-1" src="/images/insta_icon.png" alt="insta" />
             </a>
-            <a href="">
+            <a href="mailto:arinniee@naver.com">
               <img className="p-1" src="/images/mail_icon.png" alt="mail" />
             </a>
-            <a href="">
+            <a href="https://www.youtube.com/channel/UCecNefrimxKGErQOzZ6LhmA">
               <img
                 className="p-1"
                 src="/images/youtube_icon.png"
