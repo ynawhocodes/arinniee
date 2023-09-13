@@ -39,7 +39,7 @@ const FilmPage = () => {
               }}
             >
               <Image
-                className="aspect-[1/1] bg-gray-300"
+                className="aspect-[1/1] bg-gray-300 object-cover"
                 src={film.thumbnailImageUrl}
                 alt="film thumbnail"
                 width={300}
