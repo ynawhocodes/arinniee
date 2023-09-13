@@ -8,8 +8,6 @@ const getShop = async () => {
     .limit(12)
     .order('id', { ascending: false })
 
-  console.log(shops)
-  
   if (error) {
     console.log(error);
   }

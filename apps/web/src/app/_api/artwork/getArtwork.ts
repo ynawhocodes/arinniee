@@ -7,8 +7,6 @@ const getArtwork = async () => {
     .select("id, thumbnailImageUrl")
     .order('id', { ascending: false })
 
-  console.log('>', artworks)
-  
   if (error) {
     console.log(error);
   }

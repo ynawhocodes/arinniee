@@ -20,8 +20,6 @@ const CompcardPage = () => {
     setIsModalOpen(false);
   };
 
-  console.log(compcards)
-
   return (
     <>
       <ImageModal isOpen={isModalOpen} onClose={closeModal}>
@@ -60,7 +58,6 @@ const CompcardPage = () => {
               onClick={() => {
                 openModal();
                 setClickImageIndex(index);
-                console.log(compcard.thumbnailImageUrl)
               }}
             >
               <Image

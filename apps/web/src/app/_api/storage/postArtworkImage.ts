@@ -5,8 +5,6 @@ const postArtworkImage = async (file: File,folder: string, name: string) => {
     .from("web")
     .upload(`${folder}/2020/thumbnail/${folder}_${name}`, file);
 
-  console.log('data', data);
-
   if (error) {
     console.log(error);
   } else {
