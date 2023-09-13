@@ -29,7 +29,7 @@ const FilmPage = () => {
         <img src="/images/film_title.png" alt="film" />
       </div>
       <div className="flex justify-center">
-        <div className="px-4 py-2.5 grid grid-cols-3 gap-2.5 lg:w-1/2 w-full">
+        <div className="px-4 py-2.5 grid grid-cols-3 gap-2.5 w-full max-w-[600px]">
           {films?.map((film, index) => (
             <div
               key={film.id}

@@ -30,7 +30,7 @@ const ArtworkPage = () => {
         <img src="/images/artwork_title.png" alt="artwork" />
       </div>
       <div className="flex justify-center">
-        <div className="px-4 py-2.5 lg:w-1/2 w-full">
+        <div className="px-4 py-2.5  w-full max-w-[600px]">
           {artworks?.map((film, index) => (
             <div
               key={film.id}
@@ -40,7 +40,7 @@ const ArtworkPage = () => {
               }}
             >
               <Image
-                className="aspect-[2/1] mb-2 bg-gray-300 w-full"
+                className="aspect-[2/1] mb-2 bg-gray-300 object-cover w-full"
                 src={film.thumbnailImageUrl}
                 alt="film thumbnail"
                 width={300}
