@@ -4,7 +4,7 @@ import { getCompcard } from "../_api/compcard/getCompcard";
 const useCompcard = () => {
   const { data: compcards, error } = useSWR("compcard", () => getCompcard());
 
-  console.log(error);
+  // console.log(error);
   
   return { compcards };
 };

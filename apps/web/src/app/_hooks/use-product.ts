@@ -4,7 +4,7 @@ import { getProduct } from "../_api/shop/getProduct";
 const useProduct = (productId: number) => {
   const { data: product, error } = useSWR("product", () => getProduct(productId));
 
-  console.log(error);
+  // console.log(error);
   
   return { product };
 };

@@ -4,7 +4,7 @@ import { getArtwork } from "../_api/artwork/getArtwork";
 const useArtwork = () => {
   const { data: artworks, error } = useSWR("artwork", () => getArtwork());
 
-  console.log(error);
+  // console.log(error);
   
   return { artworks };
 };
