@@ -5,6 +5,7 @@ const getDrawing = async () => {
   let { data: drawings, error } = await supabase
     .from("drawing")
     .select("*")
+    .order('id', { ascending: false })
 
   if (error) {
     console.log(error);

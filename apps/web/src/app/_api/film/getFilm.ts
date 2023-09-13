@@ -5,7 +5,8 @@ const getFilm = async () => {
   let { data: films, error } = await supabase
     .from("film")
     .select("id, thumbnailImageUrl")
-
+    .order('id', { ascending: false })
+    
   console.log(films)
   
   if (error) {

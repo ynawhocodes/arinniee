@@ -5,6 +5,7 @@ const getArtwork = async () => {
   let { data: artworks, error } = await supabase
     .from("artwork")
     .select("id, thumbnailImageUrl")
+    .order('id', { ascending: false })
 
   console.log('>', artworks)
   

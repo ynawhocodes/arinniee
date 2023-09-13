@@ -6,6 +6,7 @@ const getShop = async () => {
     .from("shop")
     .select("id, thumbnailImageUrl, isSoldout")
     .limit(12)
+    .order('id', { ascending: false })
 
   console.log(shops)
   
