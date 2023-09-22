@@ -29,7 +29,7 @@ const CompcardPage = () => {
       </ImageModal>
       <div className="flex items-center justify-center py-[120px]">
         <div>
-          <img className="w-[170px]" src="/images/compcard_title_3x.png" alt="compcard" />
+          <img className="w-[170px] mb-[10px]" src="/images/compcard_title_3x.png" alt="compcard" />
           <div className="flex justify-center">
             <a href="https://www.instagram.com/arinniee/">
               <img className="p-1 w-[28px]" src="/images/insta_icon_3x.png" alt="insta" />
