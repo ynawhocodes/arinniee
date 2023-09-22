@@ -9,7 +9,7 @@ export default function Home() {
     <>
       {onToggle ? (
         <>
-          <div className="flex items-center justify-center h-screen">
+          <div className="flex items-center justify-center">
             <img
               className="animate-fade-in w-1/3 max-w-[200px]"
               src="/images/main.png"
@@ -22,7 +22,7 @@ export default function Home() {
           <div className="fixed top-0 z-50 h-10 p-4 bg-white">
             <img className="w-[20px]" src="/images/bar_3x.png" alt="bar" />
           </div>
-          <div className="flex items-center justify-center h-screen">
+          <div className="flex items-center justify-center">
             <div>
               <img className="w-[90px]" src="/images/logo_3x.png" alt="arinniee logo" />
             </div>
