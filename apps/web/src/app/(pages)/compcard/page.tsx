@@ -29,18 +29,18 @@ const CompcardPage = () => {
       </ImageModal>
       <div className="flex items-center justify-center py-[120px]">
         <div>
-          <img src="/images/compcard_title.png" alt="compcard" />
+          <img className="w-[170px]" src="/images/compcard_title_3x.png" alt="compcard" />
           <div className="flex justify-center">
             <a href="https://www.instagram.com/arinniee/">
-              <img className="p-1" src="/images/insta_icon.png" alt="insta" />
+              <img className="p-1 w-[28px]" src="/images/insta_icon_3x.png" alt="insta" />
             </a>
             <a href="mailto:arinniee@naver.com">
-              <img className="p-1" src="/images/mail_icon.png" alt="mail" />
+              <img className="p-1 w-[28px]" src="/images/mail_icon_3x.png" alt="mail" />
             </a>
             <a href="https://www.youtube.com/channel/UCecNefrimxKGErQOzZ6LhmA">
               <img
-                className="p-1"
-                src="/images/youtube_icon.png"
+                className="p-1 w-[24px]"
+                src="/images/youtube_icon_3x.png"
                 alt="youtube"
               />
             </a>

@@ -26,7 +26,7 @@ const FilmPage = () => {
         )}
       </ImageModal>
       <div className="flex items-center justify-center py-[120px]">
-        <img src="/images/film_title.png" alt="film" />
+        <img className="w-[160px]" src="/images/film_title_3x.png" alt="film" />
       </div>
       <div className="flex justify-center">
         <div className="px-4 py-2.5 grid grid-cols-3 gap-2.5 w-full max-w-[600px]">

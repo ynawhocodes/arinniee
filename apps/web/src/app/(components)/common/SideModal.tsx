@@ -22,7 +22,7 @@ const SideModal = ({ isOpen, toggleModal }) => {
       >
         <div className="grid">
           <button onClick={toggleModal}>
-            <img src="/images/close.png" alt="close" />
+            <img className="w-[15px]" src="/images/close_3x.png" alt="close" />
           </button>
           <button
             className="mt-7 py-1.5"
@@ -31,7 +31,7 @@ const SideModal = ({ isOpen, toggleModal }) => {
               toggleModal();
             }}
           >
-            <img src="/images/compcard.png" alt="compcard" />
+            <img className="w-[52px]" src="/images/compcard_3x.png" alt="compcard" />
           </button>
           <button
             className="py-1.5"
@@ -40,7 +40,7 @@ const SideModal = ({ isOpen, toggleModal }) => {
               toggleModal();
             }}
           >
-            <img src="/images/artwork.png" alt="artwork" />
+            <img className="w-[40px]" src="/images/artwork_3x.png" alt="artwork" />
           </button>
           <button
             className="py-1.5"
@@ -49,7 +49,7 @@ const SideModal = ({ isOpen, toggleModal }) => {
               toggleModal();
             }}
           >
-            <img src="/images/film.png" alt="film" />
+            <img className="w-[26px]" src="/images/film_3x.png" alt="film" />
           </button>
           <button
             className="py-1.5"
@@ -58,7 +58,7 @@ const SideModal = ({ isOpen, toggleModal }) => {
               toggleModal();
             }}
           >
-            <img src="/images/drawing.png" alt="drawing" />
+            <img className="w-[40px]" src="/images/drawing_3x.png" alt="drawing" />
           </button>
           <button
             className="mb-7 py-1.5"
@@ -67,7 +67,7 @@ const SideModal = ({ isOpen, toggleModal }) => {
               toggleModal();
             }}
           >
-            <img src="/images/shop.png" alt="shop" />
+            <img className="w-[22px]" src="/images/shop_3x.png" alt="shop" />
           </button>
           <button
             onClick={() => {
@@ -75,7 +75,7 @@ const SideModal = ({ isOpen, toggleModal }) => {
               toggleModal();
             }}
           >
-            <img src="/images/home.png" alt="home" />
+            <img className="w-[30px]" src="/images/home_3x.png" alt="home" />
           </button>
         </div>
       </div>

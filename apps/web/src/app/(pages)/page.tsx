@@ -20,11 +20,11 @@ export default function Home() {
       ) : (
         <div onClick={() => setOnToggle(true)}>
           <div className="fixed top-0 z-50 h-10 p-4 bg-white">
-            <img src="/images/bar.png" alt="bar" />
+            <img className="w-[20px]" src="/images/bar_3x.png" alt="bar" />
           </div>
           <div className="flex items-center justify-center h-screen">
             <div>
-              <img src="/images/logo.png" alt="arinniee logo" />
+              <img className="w-[90px]" src="/images/logo_3x.png" alt="arinniee logo" />
             </div>
           </div>
         </div>
