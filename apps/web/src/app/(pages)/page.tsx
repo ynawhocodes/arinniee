@@ -10,7 +10,7 @@ export default function Home() {
       {onToggle ? (
           <div className="flex items-center justify-center h-full">
             <img
-              className="animate-fade-in w-1/3 max-w-[200px]"
+              className="animate-fade-in w-[44%] max-w-[210px]"
               src="/images/main.png"
               alt="main"
             />
