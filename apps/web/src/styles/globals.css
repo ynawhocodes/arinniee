@@ -21,3 +21,7 @@ html {
 body {
     @apply h-full;
 }
+
+main {
+    @apply h-full;
+}
