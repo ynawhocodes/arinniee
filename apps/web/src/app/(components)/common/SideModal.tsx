@@ -31,7 +31,7 @@ const SideModal = ({ isOpen, toggleModal }) => {
               toggleModal();
             }}
           >
-            <img className="w-[80px]" src="/images/compcard_3x.png" alt="compcard" />
+            <img className="w-[72px]" src="/images/compcard_3x.png" alt="compcard" />
           </button>
           <button
             className="py-2"
@@ -40,7 +40,7 @@ const SideModal = ({ isOpen, toggleModal }) => {
               toggleModal();
             }}
           >
-            <img className="w-[65px]" src="/images/artwork_3x.png" alt="artwork" />
+            <img className="w-[55px]" src="/images/artwork_3x.png" alt="artwork" />
           </button>
           <button
             className="py-2"
@@ -49,7 +49,7 @@ const SideModal = ({ isOpen, toggleModal }) => {
               toggleModal();
             }}
           >
-            <img className="w-[40px]" src="/images/film_3x.png" alt="film" />
+            <img className="w-[33px]" src="/images/film_3x.png" alt="film" />
           </button>
           <button
             className="py-2"
@@ -58,7 +58,7 @@ const SideModal = ({ isOpen, toggleModal }) => {
               toggleModal();
             }}
           >
-            <img className="w-[63px]" src="/images/drawing_3x.png" alt="drawing" />
+            <img className="w-[55px]" src="/images/drawing_3x.png" alt="drawing" />
           </button>
           <button
             className="mb-7 py-2"
@@ -67,7 +67,7 @@ const SideModal = ({ isOpen, toggleModal }) => {
               toggleModal();
             }}
           >
-            <img className="w-[32px]" src="/images/shop_3x.png" alt="shop" />
+            <img className="w-[34px]" src="/images/shop_3x.png" alt="shop" />
           </button>
           <button
             onClick={() => {
