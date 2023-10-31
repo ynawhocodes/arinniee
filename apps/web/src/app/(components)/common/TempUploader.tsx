@@ -62,9 +62,9 @@ const TempUploader = ({ folder }: { folder: string }) => {
           type="text"
           onChange={(e) => setName(e.target.value)}
           value={name}
-          placeholder="hash"
+          placeholder="날짜입력하기(해시값)"
         />
-        <button onClick={() => onSubmit()}>upload</button>
+        <button onClick={() => onSubmit()}>업로드</button>
       </div>
     </>
   );

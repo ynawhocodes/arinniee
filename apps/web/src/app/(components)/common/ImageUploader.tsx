@@ -90,7 +90,7 @@ const ImageUploader = ({
           <div>
             <div className="w-[80px] h-[80px] bg-grey rounded-full relative cursor-pointer">
               <div className="absolute bottom-[-6px] right-[-9px]">
-                {!attachment && <p>HERE</p>}
+                {!attachment && <p>사진 가져오기</p>}
               </div>
             </div>
           </div>
