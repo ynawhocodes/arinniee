@@ -27,7 +27,7 @@ const ArtworkPage = () => {
         )}
       </ImageModal>
       <div className="flex items-center justify-center py-[120px]">
-        <img src="/images/artwork_title.png" alt="artwork" />
+        <img className="w-[100px]" src="/images/artwork_title_3x.png" alt="artwork" />
       </div>
       <div className="flex justify-center">
         <div className="px-4 py-2.5  w-full max-w-[600px]">

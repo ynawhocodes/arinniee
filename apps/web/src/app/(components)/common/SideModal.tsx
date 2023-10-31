@@ -16,58 +16,58 @@ const SideModal = ({ isOpen, toggleModal }) => {
       )}
 
       <div
-        className={`fixed inset-y-0 left-0 w-1/3 bg-white shadow-lg transform transition-transform duration-300 p-5 ${
+        className={`fixed inset-y-0 left-0 w-[48%] bg-white shadow-lg transform transition-transform duration-300 p-5 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div className="grid">
           <button onClick={toggleModal}>
-            <img src="/images/close.png" alt="close" />
+            <img className="w-[15px] mb-[20px]" src="/images/close_3x.png" alt="close" />
           </button>
           <button
-            className="mt-7 py-1.5"
+            className="mt-7 py-2"
             onClick={() => {
               onLink("/compcard");
               toggleModal();
             }}
           >
-            <img src="/images/compcard.png" alt="compcard" />
+            <img className="w-[72px]" src="/images/compcard_3x.png" alt="compcard" />
           </button>
           <button
-            className="py-1.5"
+            className="py-2"
             onClick={() => {
               onLink("/artwork");
               toggleModal();
             }}
           >
-            <img src="/images/artwork.png" alt="artwork" />
+            <img className="w-[55px]" src="/images/artwork_3x.png" alt="artwork" />
           </button>
           <button
-            className="py-1.5"
+            className="py-2"
             onClick={() => {
               onLink("/film");
               toggleModal();
             }}
           >
-            <img src="/images/film.png" alt="film" />
+            <img className="w-[33px]" src="/images/film_3x.png" alt="film" />
           </button>
           <button
-            className="py-1.5"
+            className="py-2"
             onClick={() => {
               onLink("/drawing");
               toggleModal();
             }}
           >
-            <img src="/images/drawing.png" alt="drawing" />
+            <img className="w-[55px]" src="/images/drawing_3x.png" alt="drawing" />
           </button>
           <button
-            className="mb-7 py-1.5"
+            className="mb-7 py-2"
             onClick={() => {
               onLink("/shop");
               toggleModal();
             }}
           >
-            <img src="/images/shop.png" alt="shop" />
+            <img className="w-[34px]" src="/images/shop_3x.png" alt="shop" />
           </button>
           <button
             onClick={() => {
@@ -75,7 +75,7 @@ const SideModal = ({ isOpen, toggleModal }) => {
               toggleModal();
             }}
           >
-            <img src="/images/home.png" alt="home" />
+            <img className="w-[45px] mt-[20px]" src="/images/home_3x.png" alt="home" />
           </button>
         </div>
       </div>

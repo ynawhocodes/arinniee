@@ -13,3 +13,15 @@
 .animate-fade-in {
     animation: fadeIn 0.5s ease-in-out;
 }
+
+html {
+    @apply h-full;
+}
+
+body {
+    @apply h-full;
+}
+
+main {
+    @apply h-full;
+}

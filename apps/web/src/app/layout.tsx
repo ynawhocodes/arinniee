@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://arinniee.com"),
   openGraph: {
-    title: "arinniee - !",
-    description: "arinniee",
+    title: "arinniee",
+    description: "@arinniee",
     url: "https://arinniee.com",
     siteName: "arinniee's website",
     images: [
