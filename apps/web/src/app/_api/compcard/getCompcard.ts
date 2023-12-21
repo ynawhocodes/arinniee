@@ -5,7 +5,7 @@ const getCompcard = async () => {
   let { data: compcards, error } = await supabase
     .from("compcard")
     .select("*")
-    .order('id', { ascending: false })
+    .order("orderNum", { ascending: false });
 
   if (error) {
     console.log(error);
