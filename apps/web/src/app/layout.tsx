@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import { Metadata } from "next";
 // include styles from the ui package
-import "ui/styles.css";
+// import "ui/styles.css";
 import Header from "./(components)/common/Header";
 
 export const metadata: Metadata = {

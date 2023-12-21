@@ -84,8 +84,8 @@ const ImageUploader = ({
           onChange={onUploadImage}
           multiple
         />
-        <div className="bg-[#EEE] px-4 py-1 rounded-md shadow-lg w-[120px] cursor-pointer">
-          {!attachment && <p>사진 가져오기</p>}
+        <div className="bg-[#EEE] px-4 py-1 rounded-md shadow-lg w-[110px] cursor-pointer">
+          {!attachment && <p>사진 업로드</p>}
         </div>
       </div>
       {attachment && (
@@ -94,8 +94,8 @@ const ImageUploader = ({
           onClick={onClearAttachment}
           src={typeof attachment === "string" ? attachment : ""}
           alt="Preview Image"
-          width={140}
-          height={140}
+          width={40}
+          height={40}
           priority={true}
         />
       )}

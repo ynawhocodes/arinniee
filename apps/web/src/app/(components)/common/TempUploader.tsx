@@ -48,6 +48,9 @@ const TempUploader = ({ folder }: { folder: string }) => {
     };
 
     upload();
+
+    alert("업로드 완료!");
+    // window.location.reload();
   };
 
   return (
@@ -64,7 +67,7 @@ const TempUploader = ({ folder }: { folder: string }) => {
               type="text"
               onChange={(e) => setName(e.target.value)}
               value={name}
-              placeholder="날짜 입력하기 (해시값)"
+              placeholder="날짜입력(구분용) ex.1124"
             />
             {name && (
               <button
