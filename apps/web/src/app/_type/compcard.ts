@@ -4,4 +4,5 @@ export interface CompcardType {
   thumbnailImageUrl: string;
   imageUrl: string;
   description: string;
+  orderNum: number;
 }

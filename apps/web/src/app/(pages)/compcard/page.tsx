@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import ImageModal from "../../(components)/ImageModal";
-import ImageSlider from "../../(components)/ImageSlider";
 import useCompcard from "../../_hooks/use-compcard";
 import Image from "next/image";
 import TempUploader from "../../(components)/common/TempUploader";
@@ -109,7 +108,7 @@ const CompcardPage = () => {
                     <input
                       className="w-10"
                       type="number"
-                      // value={orderNum}
+                      value={compcard.orderNum}
                       onChange={(e) => setOrderNum(Number(e.target.value))}
                     ></input>
                     <button
