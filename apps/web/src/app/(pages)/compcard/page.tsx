@@ -1,121 +1,101 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 import ImageModal from "../../(components)/ImageModal";
-import ImageSlider from "../../(components)/ImageSlider";
-import useCompcard from "../../_hooks/use-compcard";
+import useCompcardPagination from "../../_hooks/use-compcard"
 import Image from "next/image";
-import TempUploader from "../../(components)/common/TempUploader";
-import { deleteCompcard } from "../../_api/compcard/deleteCompard";
 
 const CompcardPage = () => {
-  const { compcards } = useCompcard();
+  const [page, setPage] = useState(1);
+  const { compcards } = useCompcardPagination(page);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [clickImageIndex, setClickImageIndex] = useState(0);
   const [isCancleMode, setIsCancleMode] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  
+  const ref = useRef(null);
+  const isInView = useInView(ref);
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const handleModalOpen = () => setIsModalOpen(true);
+  const handleModalClose = () => setIsModalOpen(false);
+  const handleImageLoad = () => setIsLoaded(true);
+  const handleImageClick = (index: number) => {
+    handleModalOpen();
+    setClickImageIndex(index);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  useEffect(() => {
+    if (isInView) {
+      setPage(prev => prev + 1);
+    }
+  }, [isInView]);
+
+  const renderSocialLinks = () => (
+    <div className="flex justify-center">
+      <SocialLink href="https://www.instagram.com/arinniee/" icon="/images/insta_icon_3x.png" alt="insta" width="28px" />
+      <SocialLink href="mailto:arinniee@naver.com" icon="/images/mail_icon_3x.png" alt="mail" width="28px" />
+      <SocialLink href="https://www.youtube.com/channel/UCecNefrimxKGErQOzZ6LhmA" icon="/images/youtube_icon_3x.png" alt="youtube" width="24px" />
+    </div>
+  );
+
+  const renderHeader = () => (
+    <div className="flex items-center justify-center py-[120px]">
+      <div>
+        <img
+          className="w-[170px] mb-[10px]"
+          src="/images/compcard_title_3x.png"
+          alt="compcard"
+        />
+        {renderSocialLinks()}
+      </div>
+    </div>
+  );
+
+  const renderImageGrid = () => (
+    <div className="flex justify-center">
+      <div className="px-4 py-2.5 grid grid-cols-3 gap-1 md:gap-2.5 w-full max-w-[600px]">
+        {compcards?.map((compcard, index) => (
+          <div key={compcard.id} className="relative">
+            <Image
+              className={`aspect-[1/1] bg-gray-300 object-cover transition-opacity duration-200 ${
+                isCancleMode ? 'rounded-2xl animate-wiggle' : ''} ${
+                isLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              onClick={() => handleImageClick(index)}
+              src={compcard.thumbnailImageUrl}
+              alt="film thumbnail"
+              width={300}
+              height={300}
+              loading="lazy"
+              onLoad={handleImageLoad}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 
   return (
     <>
-      <ImageModal isOpen={isModalOpen} onClose={closeModal}>
-        {compcards && (
-          <img src={compcards[Number(clickImageIndex)]?.imageUrl} />
-        )}
-      </ImageModal>
-      <div className="flex items-center justify-center py-[120px]">
-        <div>
-          <img
-            className="w-[170px] mb-[10px]"
-            src="/images/compcard_title_3x.png"
-            alt="compcard"
-          />
-          <div className="flex justify-center">
-            <a href="https://www.instagram.com/arinniee/">
-              <img
-                className="p-1 w-[28px]"
-                src="/images/insta_icon_3x.png"
-                alt="insta"
-              />
-            </a>
-            <a href="mailto:arinniee@naver.com">
-              <img
-                className="p-1 w-[28px]"
-                src="/images/mail_icon_3x.png"
-                alt="mail"
-              />
-            </a>
-            <a href="https://www.youtube.com/channel/UCecNefrimxKGErQOzZ6LhmA">
-              <img
-                className="p-1 w-[24px]"
-                src="/images/youtube_icon_3x.png"
-                alt="youtube"
-              />
-            </a>
-          </div>
-        </div>
-      </div>
-      {/* <div className="flex justify-center items-center">
-        <img src="/images/comingsoon.png" alt="comingsoon" />
-      </div> */}
+      <ImageModal 
+        isOpen={isModalOpen} 
+        onClose={handleModalClose} 
+        src={compcards && clickImageIndex !== null ? compcards[Number(clickImageIndex)]?.imageUrl : ''}
+      />
 
-      {/* ----------어드민---------- */}
-      {/* <div className="flex items-end justify-center py-4 my-4 border-[2px] border-[black]">
-        <TempUploader folder="compcard" />
-        <button
-          className="bg-[#EEE] px-4 py-1 rounded-md shadow-lg w-[175px] ml-2"
-          onClick={() => setIsCancleMode(!isCancleMode)}
-        >
-          게시글 삭제 모드
-          <span
-            className={`font-bold ml-1 ${
-              isCancleMode ? `text-red-500` : `text-green-500`
-            }`}
-          >
-            {isCancleMode ? "OFF" : "ON"}
-          </span>
-        </button>
-      </div> */}
-      {/* ----------어드민---------- */}
-      <div className="flex justify-center">
-        <div className="px-4 py-2.5 grid grid-cols-3 gap-1 md:gap-2.5 w-full max-w-[600px]">
-          {compcards?.map((compcard, index) => (
-            <div key={compcard.id} className="relative">
-              {isCancleMode && (
-                <div
-                  className="absolute top-[-10px] left-[-10px] flex items-center justify-center w-6 bg-gray-400 rounded-full aspect-square z-10"
-                  onClick={async () => {
-                    console.log(compcard.id);
-                    await deleteCompcard(compcard.id);
-                  }}
-                >
-                  <p className="text-white">X</p>
-                </div>
-              )}
-              <Image
-                className={`aspect-[1/1] bg-gray-300 object-cover ${
-                  isCancleMode ? `rounded-2xl animate-wiggle` : ``}`}
-                onClick={() => {
-                  openModal();
-                  setClickImageIndex(index);
-                }}
-                src={compcard.thumbnailImageUrl}
-                alt="film thumbnail"
-                width={300}
-                height={300}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
+      {renderHeader()}
+      {renderImageGrid()}
+      <div ref={ref} />
     </>
   );
 };
+
+const SocialLink = ({ href, icon, alt, width }: { href: string; icon: string; alt: string; width: string }) => (
+  <a href={href}>
+    <img className={`p-1`} src={icon} alt={alt} style={{ width: width }} />
+  </a>
+);
 
 export default CompcardPage;
