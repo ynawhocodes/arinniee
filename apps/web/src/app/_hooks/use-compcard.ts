@@ -9,12 +9,9 @@ const useCompcard = () => {
   return { compcards };
 };
 
-export default useCompcard;
-
-
 const useCompcardPagination = (page: number) => {
   const { data: compcards, error } = useSWR(`compcard?page=${page}`, () => getCompcardPagination(page));
   return { compcards };
 };
 
-export { useCompcardPagination };
+export { useCompcard, useCompcardPagination };
