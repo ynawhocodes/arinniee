@@ -1,6 +1,11 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
+  "globalEnv": [
+    "NEXT_PUBLIC_SUPABASE_BASE_URL",
+    "NEXT_PUBLIC_SUPABASE_API_KEY",
+    "NEXT_PUBLIC_GA_MEASUREMENT_ID"
+  ],
   "tasks": {
       "build": {
           "dependsOn": ["^build"],
@@ -8,8 +13,7 @@
           "env": ["NODE_ENV"]
       },
       "web#build": {
-          "dependsOn": ["^build"],
-          "env": ["NEXT_PUBLIC_SUPABASE_BASE_URL", "NEXT_PUBLIC_SUPABASE_API_KEY", "NEXT_PUBLIC_GA_MEASUREMENT_ID"]
+        "dependsOn": ["^build"]
       },
       "lint": {},
       "check-types": {},
