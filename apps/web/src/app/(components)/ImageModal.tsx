@@ -39,15 +39,15 @@ const ImageModal = ({ isOpen, onClose, src }: ModalProps) => {
         tabIndex={0}
         aria-label="모달 닫기"
       />
+      {!isImageLoaded && (
+        <svg className="fixed animate-bounce" viewBox="0 0 200 200" width="70" height="70">
+          <ellipse cx="100" cy="110" rx="40" ry="25" fill="#FFD700" />
+          <circle cx="100" cy="70" r="30" fill="#FFD700" />
+          <circle cx="110" cy="65" r="5" fill="#000000" />
+          <polygon points="129,65 129,80 142,72.5" fill="#FFA500" />
+        </svg>
+      )}
       <div className="relative z-50 w-4/5 max-w-[400px]">
-        {!isImageLoaded && (
-          <svg className="fixed top-1/2 left-1/2 animate-bounce -translate-x-1/2 -translate-y-1/2" viewBox="0 0 200 200" width="70" height="70">
-            <ellipse cx="120" cy="110" rx="40" ry="25" fill="#FFD700" />
-            <circle cx="130" cy="70" r="30" fill="#FFD700" />
-            <circle cx="140" cy="65" r="5" fill="#000000" />
-              <polygon points="159,65 159,80 172,72.5" fill="#FFA500" />
-          </svg>
-        )}
         <Image
           src={src} 
           onLoad={() => setIsImageLoaded(true)} 
