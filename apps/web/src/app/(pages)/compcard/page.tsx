@@ -61,7 +61,7 @@ const CompcardPage = () => {
           </div>
         </div>
       </div>
-      {/* <div className="flex items-center justify-center ">
+      {/* <div className="flex justify-center items-center">
         <img src="/images/comingsoon.png" alt="comingsoon" />
       </div> */}
 
@@ -84,7 +84,7 @@ const CompcardPage = () => {
       </div> */}
       {/* ----------어드민---------- */}
       <div className="flex justify-center">
-        <div className="px-4 py-2.5 grid grid-cols-3 gap-2.5 w-full max-w-[600px]">
+        <div className="px-4 py-2.5 grid grid-cols-3 gap-1 md:gap-2.5 w-full max-w-[600px]">
           {compcards?.map((compcard, index) => (
             <div key={compcard.id} className="relative">
               {isCancleMode && (
@@ -100,8 +100,7 @@ const CompcardPage = () => {
               )}
               <Image
                 className={`aspect-[1/1] bg-gray-300 object-cover ${
-                  isCancleMode ? `animate-wiggle rounded-2xl` : ``
-                }`}
+                  isCancleMode ? `rounded-2xl animate-wiggle` : ``}`}
                 onClick={() => {
                   openModal();
                   setClickImageIndex(index);
