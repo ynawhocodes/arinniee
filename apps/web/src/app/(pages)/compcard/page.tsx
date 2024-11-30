@@ -4,16 +4,20 @@ import { useState, useEffect } from "react";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import ImageModal from "../../(components)/ImageModal";
-import useCompcardPagination from "../../_hooks/use-compcard"
+import { useCompcard, useCompcardPagination } from "../../_hooks/use-compcard"
 import Image from "next/image";
 
 const CompcardPage = () => {
   const [page, setPage] = useState(1);
-  const { compcards } = useCompcardPagination(page);
+  const [allCompcards, setAllCompcards] = useState([]);
+  // const { compcards } = useCompcardPagination(page);
+  const { compcards } = useCompcard();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [clickImageIndex, setClickImageIndex] = useState(0);
   const [isCancleMode, setIsCancleMode] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
   
   const ref = useRef(null);
   const isInView = useInView(ref);
@@ -27,10 +31,27 @@ const CompcardPage = () => {
   };
 
   useEffect(() => {
-    if (isInView) {
-      setPage(prev => prev + 1);
+    if (compcards) {
+      if (compcards.length === 0) {
+        setHasMore(false);
+        return;
+      }
+      
+      // 중복 제거를 위해 Set 사용
+      const uniqueCompcards = [...new Set([...allCompcards, ...compcards].map(card => JSON.stringify(card)))].map(str => JSON.parse(str));
+      setAllCompcards(uniqueCompcards);
+      setIsLoading(false);
     }
-  }, [isInView]);
+  }, [compcards]);
+
+  useEffect(() => {
+    if (isInView && !isLoading && hasMore) {
+      setIsLoading(true);
+      setTimeout(() => {
+        setPage(prev => prev + 1);
+      }, 1000);
+    }
+  }, [isInView, isLoading, hasMore]);
 
   const renderSocialLinks = () => (
     <div className="flex justify-center">
@@ -55,7 +76,7 @@ const CompcardPage = () => {
 
   const renderImageGrid = () => (
     <div className="flex justify-center">
-      <div className="px-4 py-2.5 grid grid-cols-3 gap-1 md:gap-2.5 w-full max-w-[600px]">
+      <div className="px-4 py-2.5 grid grid-cols-3 gap-1 md:gap-2.5 w-full max-w-[600px] min-h-screen">
         {compcards?.map((compcard, index) => (
           <div key={compcard.id} className="relative">
             <Image
@@ -82,12 +103,12 @@ const CompcardPage = () => {
       <ImageModal 
         isOpen={isModalOpen} 
         onClose={handleModalClose} 
-        src={compcards && clickImageIndex !== null ? compcards[Number(clickImageIndex)]?.imageUrl : ''}
+        src={allCompcards && clickImageIndex !== null ? allCompcards[Number(clickImageIndex)]?.imageUrl : ''}
       />
 
       {renderHeader()}
       {renderImageGrid()}
-      <div ref={ref} />
+      <div ref={ref} className="h-[100px]" />
     </>
   );
 };
