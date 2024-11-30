@@ -108,7 +108,7 @@ const CompcardPage = () => {
 
       {renderHeader()}
       {renderImageGrid()}
-      <div ref={ref} className="h-[100px]" />
+      <div ref={ref} className="h-[10px]" />
     </>
   );
 };

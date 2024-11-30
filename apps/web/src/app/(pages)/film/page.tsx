@@ -20,16 +20,12 @@ const FilmPage = () => {
   };
   return (
     <>
-      <ImageModal isOpen={isModalOpen} onClose={closeModal}>
-        {films && (
-          <img src={films[Number(clickImageIndex)]?.thumbnailImageUrl} />
-        )}
-      </ImageModal>
+      <ImageModal isOpen={isModalOpen} onClose={closeModal} src={films && clickImageIndex !== null ? films[Number(clickImageIndex)]?.thumbnailImageUrl : ''} />
       <div className="flex items-center justify-center py-[120px]">
         <img className="w-[160px]" src="/images/film_title_3x.png" alt="film" />
       </div>
       <div className="flex justify-center">
-        <div className="px-4 py-2.5 grid grid-cols-3 gap-2.5 w-full max-w-[600px]">
+        <div className="px-4 py-2.5 grid grid-cols-3 gap-1 md:gap-2.5 w-full max-w-[600px]">
           {films?.map((film, index) => (
             <div
               key={film.id}

@@ -21,16 +21,12 @@ const ArtworkPage = () => {
 
   return (
     <>
-      <ImageModal isOpen={isModalOpen} onClose={closeModal}>
-        {artworks && (
-          <img src={artworks[Number(clickImageIndex)]?.thumbnailImageUrl} />
-        )}
-      </ImageModal>
+      <ImageModal isOpen={isModalOpen} onClose={closeModal} src={artworks && clickImageIndex !== null ? artworks[Number(clickImageIndex)]?.thumbnailImageUrl : ''} />
       <div className="flex items-center justify-center py-[120px]">
         <img className="w-[100px]" src="/images/artwork_title_3x.png" alt="artwork" />
       </div>
       <div className="flex justify-center">
-        <div className="px-4 py-2.5  w-full max-w-[600px]">
+        <div className="px-4 py-2.5 w-full max-w-[600px]">
           {artworks?.map((film, index) => (
             <div
               key={film.id}
@@ -40,7 +36,7 @@ const ArtworkPage = () => {
               }}
             >
               <Image
-                className="aspect-[2/1] mb-2 bg-gray-300 object-cover w-full"
+                className="aspect-[2/1] mb-1 md:mb-2 bg-gray-300 object-cover w-full"
                 src={film.thumbnailImageUrl}
                 alt="film thumbnail"
                 width={300}

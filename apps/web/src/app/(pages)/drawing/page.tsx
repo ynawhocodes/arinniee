@@ -20,14 +20,12 @@ const DrawingPage = () => {
   };
   return (
     <>
-      <ImageModal isOpen={isModalOpen} onClose={closeModal}>
-        {drawings && <img src={drawings[Number(clickImageIndex)]?.thumbnailImageUrl}/>}
-      </ImageModal>
+      <ImageModal isOpen={isModalOpen} onClose={closeModal} src={drawings && clickImageIndex !== null ? drawings[Number(clickImageIndex)]?.thumbnailImageUrl : ''} />
       <div className="flex items-center justify-center py-[120px]">
         <img className="w-[140px]" src="/images/drawing_title_3x.png" alt="drawing" />
       </div>
       <div className="flex justify-center">
-        <div className="px-4 py-2.5 grid grid-cols-3 gap-2.5 w-full max-w-[600px]">
+        <div className="px-4 py-2.5 grid grid-cols-3 gap-1 md:gap-2.5 w-full max-w-[600px]">
           {drawings?.map((drawing, index) => (
             <div key={drawing.id} onClick={() => {openModal(); setClickImageIndex(index);}}>
               <Image
