@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { getCompcard } from "../_api/compcard/getCompcard";
+import { getCompcard, getCompcardPagination } from "../_api/compcard/getCompcard";
 
 const useCompcard = () => {
   const { data: compcards, error } = useSWR("compcard", () => getCompcard());
@@ -10,3 +10,11 @@ const useCompcard = () => {
 };
 
 export default useCompcard;
+
+
+const useCompcardPagination = (page: number) => {
+  const { data: compcards, error } = useSWR(`compcard?page=${page}`, () => getCompcardPagination(page));
+  return { compcards };
+};
+
+export { useCompcardPagination };

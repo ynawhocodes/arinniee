@@ -25,3 +25,7 @@ body {
 main {
     @apply h-full;
 }
+
+.animate-[dash_2s_linear_infinite] {
+    animation: dash 2s linear infinite;
+}   
