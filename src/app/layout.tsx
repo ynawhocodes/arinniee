@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const generateMetadata = async () => {
   const siteSetting = await getSiteSetting();
   return {
-    title: siteSetting?.title || "Peach Truck Hijakers",
+    title: siteSetting?.title || "Arinniee",
     description: siteSetting?.seo?.description,
     images: siteSetting?.seo?.ogImage,
     keywords: siteSetting?.seo?.keywords,
