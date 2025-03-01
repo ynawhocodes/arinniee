@@ -268,7 +268,27 @@ export type HslaColor = {
   a?: number;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Slug | Film | Compcard | Drawing | Artwork | SiteSetting | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Color | RgbaColor | HsvaColor | HslaColor;
+export type AllSanitySchemaTypes =
+  | SanityImagePaletteSwatch
+  | SanityImagePalette
+  | SanityImageDimensions
+  | SanityFileAsset
+  | Geopoint
+  | Slug
+  | Film
+  | Compcard
+  | Drawing
+  | Artwork
+  | SiteSetting
+  | SanityImageCrop
+  | SanityImageHotspot
+  | SanityImageAsset
+  | SanityAssetSourceData
+  | SanityImageMetadata
+  | Color
+  | RgbaColor
+  | HsvaColor
+  | HslaColor;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./sanity/queries/artwork.ts
 // Variable: artworkQuery
@@ -358,13 +378,3 @@ export type SiteSettingQueryResult = {
 } | null;
 
 // Query TypeMap
-import "@sanity/client";
-declare module "@sanity/client" {
-  interface SanityQueries {
-    "*[_type == \"artwork\"][0]{\n  _id,\n  \"images\": images[]{\n    \"image\": asset,\n    \"metadata\": asset->metadata\n  },\n}": ArtworkQueryResult;
-    "*[_type == \"compcard\"][0]{\n  _id,\n  \"images\": images[]{\n    \"image\": asset,\n    \"metadata\": asset->metadata\n  },\n}": CompcardQueryResult;
-    "*[_type == \"drawing\"][0]{\n  _id,\n  \"images\": images[]{\n    \"image\": asset,\n    \"metadata\": asset->metadata\n  },\n}": DrawingQueryResult;
-    "*[_type == \"film\"][0]{\n  _id,\n  \"images\": images[]{\n    \"image\": asset,\n    \"metadata\": asset->metadata\n  },\n}": FilmQueryResult;
-    "*[\n  _type == \"siteSetting\"\n][0]{\n  _id,\n  title,\n  \"seo\": seo{\n    description,\n    keywords,\n    ogImage,\n  }\n}": SiteSettingQueryResult;
-  }
-}
