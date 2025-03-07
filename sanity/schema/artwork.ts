@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { format } from "date-fns";
 
 export default defineType({
   name: "artwork",
@@ -12,4 +13,14 @@ export default defineType({
       of: [{ type: "image" }],
     }),
   ],
+  preview: {
+    select: {
+      updatedAt: "_updatedAt",
+    },
+    prepare(select) {
+      return {
+        title: `아트워크_${format(select.updatedAt, "yyyy-MM-dd")}`,
+      };
+    },
+  },
 });

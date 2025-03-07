@@ -19,7 +19,7 @@ import { Logo } from "./sanity/components/Logo";
 
 export default defineConfig({
   name: "default",
-  title: "PTH",
+  title: "Arinniee",
   basePath: "/studio",
   projectId,
   dataset,
