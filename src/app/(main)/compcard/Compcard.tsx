@@ -4,7 +4,6 @@ import { useState } from "react";
 import ImageModal from "@/components/ImageModal";
 import { CompcardQueryResult } from "@sanity/types/sanity.types";
 import { SanityImage } from "@/components/SanityImage";
-import { urlForRatio } from "@sanity/lib/image";
 
 interface CompcardPageProps {
   compcard: CompcardQueryResult;
@@ -87,12 +86,11 @@ export default function Compcard({ compcard }: CompcardPageProps) {
       <ImageModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        src={
-          urlForRatio(
-            compcard?.images?.[Number(clickImageIndex)]?.image?._ref || "",
-            800
-          ) || ""
-        }
+        image={{
+          ref: compcard?.images?.[Number(clickImageIndex)]?.image?._ref || "",
+          metadata:
+            compcard?.images?.[Number(clickImageIndex)]?.metadata || null,
+        }}
       />
 
       {renderHeader()}

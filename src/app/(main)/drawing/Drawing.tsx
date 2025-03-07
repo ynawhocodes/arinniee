@@ -4,7 +4,6 @@ import { useState } from "react";
 import ImageModal from "@/components/ImageModal";
 import { DrawingQueryResult } from "@sanity/types/sanity.types";
 import { SanityImage } from "@/components/SanityImage";
-import { urlForRatio } from "@sanity/lib/image";
 
 interface DrawingPageProps {
   drawing: DrawingQueryResult;
@@ -87,12 +86,11 @@ export default function Drawing({ drawing }: DrawingPageProps) {
       <ImageModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        src={
-          urlForRatio(
-            drawing?.images?.[Number(clickImageIndex)]?.image?._ref || "",
-            800
-          ) || ""
-        }
+        image={{
+          ref: drawing?.images?.[Number(clickImageIndex)]?.image?._ref || "",
+          metadata:
+            drawing?.images?.[Number(clickImageIndex)]?.metadata || null,
+        }}
       />
 
       {renderHeader()}

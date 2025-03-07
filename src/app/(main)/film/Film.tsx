@@ -4,7 +4,6 @@ import { useState } from "react";
 import ImageModal from "@/components/ImageModal";
 import { FilmQueryResult } from "@sanity/types/sanity.types";
 import { SanityImage } from "@/components/SanityImage";
-import { urlForRatio } from "@sanity/lib/image";
 
 interface FilmPageProps {
   film: FilmQueryResult;
@@ -64,14 +63,14 @@ export default function Film({ film }: FilmPageProps) {
         {film?.images?.map((item, index) => (
           <div
             key={item.image?._ref}
-            className="cursor-pointer"
+            className="cursor-pointer size-full"
             onClick={() => {
               openModal();
               setClickImageIndex(index);
             }}
           >
             <SanityImage
-              className={`aspect-[1/1] bg-gray-300 object-cover transition-opacity duration-200`}
+              className="aspect-square"
               image={{ ref: item.image?._ref, metadata: item.metadata }}
               alt="film thumbnail"
               size={400}
@@ -87,12 +86,10 @@ export default function Film({ film }: FilmPageProps) {
       <ImageModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        src={
-          urlForRatio(
-            film?.images?.[Number(clickImageIndex)]?.image?._ref || "",
-            800
-          ) || ""
-        }
+        image={{
+          ref: film?.images?.[Number(clickImageIndex)]?.image?._ref || "",
+          metadata: film?.images?.[Number(clickImageIndex)]?.metadata || null,
+        }}
       />
 
       {renderHeader()}

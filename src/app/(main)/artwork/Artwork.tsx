@@ -4,7 +4,6 @@ import { useState } from "react";
 import ImageModal from "@/components/ImageModal";
 import { ArtworkQueryResult } from "@sanity/types/sanity.types";
 import { SanityImage } from "@/components/SanityImage";
-import { urlForRatio } from "@sanity/lib/image";
 
 interface ArtworkProps {
   artwork: ArtworkQueryResult;
@@ -27,12 +26,11 @@ const ArtworkPage = ({ artwork }: ArtworkProps) => {
       <ImageModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        src={
-          urlForRatio(
-            artwork?.images?.[Number(clickImageIndex)]?.image?._ref || "",
-            800
-          ) || ""
-        }
+        image={{
+          ref: artwork?.images?.[Number(clickImageIndex)]?.image?._ref || "",
+          metadata:
+            artwork?.images?.[Number(clickImageIndex)]?.metadata || null,
+        }}
       />
       <div className="flex items-center justify-center py-[120px]">
         <img
@@ -56,7 +54,7 @@ const ArtworkPage = ({ artwork }: ArtworkProps) => {
                 className="aspect-[2/1] mb-1 md:mb-2 bg-gray-300 object-cover w-full"
                 image={{ ref: item.image?._ref, metadata: item.metadata }}
                 alt="film thumbnail"
-                size={400}
+                size={800}
               />
             </div>
           ))}
